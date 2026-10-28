@@ -1,19 +1,8 @@
-{%- liquid
-  assign navigation = linklists[menu]
--%}
-{% if navigation != blank and navigation.links.size > 0 %}
-  <ul class="nav__list">
-    {% for link in navigation.links %}
-      <li><a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a></li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <ul class="nav__list">
-    <li><a href="{{ routes.collections_url }}/mobiles">Mobiles</a></li>
-    <li><a href="{{ routes.collections_url }}/audio">Audio</a></li>
-    <li><a href="{{ routes.collections_url }}/wearables">Wearables</a></li>
-    <li><a href="{{ routes.collections_url }}/accessories">Accessories</a></li>
-    <li><a href="{{ routes.collections_url }}/computing">Computing</a></li>
-    <li><a href="{{ routes.collections_url }}/software">Software</a></li>
-  </ul>
-{% endif %}
+<ul class="nav__list">
+  <li><a href="{{ routes.collections_url }}/mobiles">Mobiles</a></li>
+  <li><a href="{{ routes.collections_url }}/audio">Audio</a></li>
+  <li><a href="{{ routes.collections_url }}/wearables">Wearables</a></li>
+  <li><a href="{{ routes.collections_url }}/accessories">Accessories</a></li>
+  <li><a href="{{ routes.collections_url }}/computing">Computing</a></li>
+  <li><a href="{{ routes.collections_url }}/software">Software</a></li>
+</ul>

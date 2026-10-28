@@ -84,7 +84,8 @@
       "type": "featured-collection",
       "settings": {
         "heading": "In stock now",
-        "limit": 6
+        "limit": 6,
+        "collection": "mobiles"
       }
     },
     "newsletter": {
