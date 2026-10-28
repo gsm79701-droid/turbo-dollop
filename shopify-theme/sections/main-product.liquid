@@ -1,0 +1,67 @@
+<section class="band" data-product>
+  <div class="shell product">
+    <div class="product__media">
+      {% if product.featured_image %}
+        {%- assign product_alt = product.featured_image.alt | default: product.title -%}
+        {{ product.featured_image | image_url: width: 1400 | image_tag: widths: '600, 900, 1400', sizes: '(min-width: 900px) 50vw, 100vw', alt: product_alt }}
+      {% else %}
+        <span class="card__placeholder card__placeholder--tall" aria-hidden="true"></span>
+      {% endif %}
+    </div>
+    <div class="product__info">
+      <p class="kicker">{{ product.type | default: product.vendor }}</p>
+      <h1>{{ product.title }}</h1>
+      {% form 'product', product, class: 'product__form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-id>
+        <div class="product__price" aria-live="polite">
+          <span data-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+          <s data-compare {% unless product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}hidden{% endunless %}>
+            {{ product.selected_or_first_available_variant.compare_at_price | money }}
+          </s>
+          <span class="stock" data-stock>
+            {% if product.selected_or_first_available_variant.available %}In stock{% else %}Sold out{% endif %}
+          </span>
+        </div>
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <label class="field">
+              <span>{{ option.name }}</span>
+              <select data-option>
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          {% endfor %}
+        {% endunless %}
+        <label class="field">
+          <span>Quantity</span>
+          <input type="number" name="quantity" value="1" min="1" inputmode="numeric">
+        </label>
+        <button class="button" type="submit" name="add" data-add {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+          {% if product.selected_or_first_available_variant.available %}Add to cart{% else %}Sold out{% endif %}
+        </button>
+        <script type="application/json" data-variant-json>{{ product.variants | json }}</script>
+      {% endform %}
+      {% assign current = product.selected_or_first_available_variant %}
+      {% if current.sku != blank %}
+        <p class="kicker">SKU {{ current.sku }}</p>
+      {% endif %}
+      <div class="rte">{{ product.description }}</div>
+      <p class="fine">
+        {% if current.requires_shipping %}
+          This is a physical item. We pack it and hand it to the courier after payment.
+        {% else %}
+          This is digital. Buy it only if the description tells you the license you receive. There is no parcel.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

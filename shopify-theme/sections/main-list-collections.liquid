@@ -1,0 +1,22 @@
+<section class="band">
+  <div class="shell">
+    <h1>Collections</h1>
+    <div class="cats">
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' %}
+          <a class="cat" href="{{ collection.url }}">
+            <span class="kicker">{{ collection.products_count }} items</span>
+            <strong>{{ collection.title }}</strong>
+          </a>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "settings": []
+}
+{% endschema %}

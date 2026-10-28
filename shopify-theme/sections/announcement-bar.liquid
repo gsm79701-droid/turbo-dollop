@@ -1,0 +1,21 @@
+{% if section.settings.text != blank %}
+  <div class="announce" role="status">
+    <p>{{ section.settings.text }}</p>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Physical orders are packed by us. A license is sent only when the product is marked digital."
+    }
+  ],
+  "presets": [{ "name": "Announcement" }]
+}
+{% endschema %}

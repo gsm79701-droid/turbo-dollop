@@ -1,0 +1,44 @@
+<section class="band band--tight">
+  <div class="shell">
+    <h2>{{ section.settings.heading }}</h2>
+    <ol class="steps">
+      <li>
+        <span>1</span>
+        <div>
+          <strong>{{ section.settings.step_1_title }}</strong>
+          <p>{{ section.settings.step_1_text }}</p>
+        </div>
+      </li>
+      <li>
+        <span>2</span>
+        <div>
+          <strong>{{ section.settings.step_2_title }}</strong>
+          <p>{{ section.settings.step_2_text }}</p>
+        </div>
+      </li>
+      <li>
+        <span>3</span>
+        <div>
+          <strong>{{ section.settings.step_3_title }}</strong>
+          <p>{{ section.settings.step_3_text }}</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How ordering works",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "How an order moves" },
+    { "type": "text", "id": "step_1_title", "label": "Step 1 title", "default": "You order online" },
+    { "type": "textarea", "id": "step_1_text", "label": "Step 1 text", "default": "Pick a listed item. The price on the product is the price you pay." },
+    { "type": "text", "id": "step_2_title", "label": "Step 2 title", "default": "We pack it" },
+    { "type": "textarea", "id": "step_2_text", "label": "Step 2 text", "default": "Each open order becomes a packing sheet: name, quantity, SKU, and address. We pack only what is on that sheet." },
+    { "type": "text", "id": "step_3_title", "label": "Step 3 title", "default": "The courier delivers" },
+    { "type": "textarea", "id": "step_3_text", "label": "Step 3 text", "default": "You hand the parcel to the courier and mark it fulfilled. A digital license has no parcel — the product page says how it is delivered." }
+  ],
+  "presets": [{ "name": "How ordering works" }]
+}
+{% endschema %}

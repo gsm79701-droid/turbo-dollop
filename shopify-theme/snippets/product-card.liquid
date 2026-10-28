@@ -1,0 +1,28 @@
+{%- liquid
+  assign card_variant = product.selected_or_first_available_variant
+  assign card_alt = product.featured_image.alt | default: product.title
+-%}
+<article class="card">
+  <a class="card__media" href="{{ product.url }}">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: widths: '300, 450, 700, 900', sizes: '(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw', alt: card_alt, loading: 'lazy' }}
+    {% else %}
+      <span class="card__placeholder" aria-hidden="true"></span>
+    {% endif %}
+    {% unless card_variant.requires_shipping %}
+      <span class="flag">License</span>
+    {% endunless %}
+  </a>
+  <div class="card__body">
+    <p class="kicker">{{ product.type | default: product.vendor }}</p>
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <div class="card__meta">
+      {% render 'price', product: product %}
+      {% if card_variant.available %}
+        <span class="stock stock--in">In stock</span>
+      {% else %}
+        <span class="stock">Sold out</span>
+      {% endif %}
+    </div>
+  </div>
+</article>
