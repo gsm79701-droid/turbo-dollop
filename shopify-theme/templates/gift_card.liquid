@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gift card — {{ shop.name }}</title>
+    {{ content_for_header }}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% render 'css-variables' %}
+  </head>
+  <body>
+    <main class="gate">
+      <div class="shell gate__card">
+        <p class="kicker">{{ shop.name }}</p>
+        <h1>Gift card</h1>
+        <p class="lede">{{ gift_card.balance | money }} remaining</p>
+        <p class="fine">Code {{ gift_card.code }}</p>
+        {% if gift_card.pass_url %}
+          <p><a class="button" href="{{ gift_card.pass_url }}">Add to wallet</a></p>
+        {% endif %}
+        <p><a href="{{ shop.url }}">Shop</a></p>
+      </div>
+    </main>
+  </body>
+</html>

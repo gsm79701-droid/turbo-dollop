@@ -1,0 +1,42 @@
+<header class="site-header">
+  <div class="shell header__row">
+    <a class="logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
+
+    <nav class="nav nav--desktop" aria-label="Primary">
+      {% render 'nav-links', menu: section.settings.menu %}
+    </nav>
+
+    <div class="header__tools">
+      <a class="tool" href="{{ routes.search_url }}">Search</a>
+      <a class="tool" href="{{ routes.cart_url }}">
+        Cart
+        <span class="count">{{ cart.item_count }}</span>
+      </a>
+      {% if shop.customer_accounts_enabled %}
+        <a class="tool" href="{{ routes.account_url }}">Account</a>
+      {% endif %}
+    </div>
+
+    <details class="nav-drawer">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        {% render 'nav-links', menu: section.settings.menu %}
+      </nav>
+    </details>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

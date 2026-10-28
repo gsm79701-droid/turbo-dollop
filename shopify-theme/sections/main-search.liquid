@@ -1,0 +1,34 @@
+<section class="band">
+  <div class="shell">
+    <h1>Search</h1>
+    <form class="search" action="{{ routes.search_url }}" method="get" role="search">
+      <label class="visually-hidden" for="search-q">Search products</label>
+      <input id="search-q" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Phone, charger, license">
+      <input type="hidden" name="type" value="product">
+      <button class="button" type="submit">Search</button>
+    </form>
+    {% if search.performed %}
+      {% paginate search.results by 12 %}
+        {% if search.results_count == 0 %}
+          <p class="muted">No products matched “{{ search.terms | escape }}”.</p>
+        {% else %}
+          <div class="grid">
+            {% for product in search.results %}
+              {% render 'product-card', product: product %}
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if paginate.pages > 1 %}
+          <nav class="pager" aria-label="Pagination">{{ paginate | default_pagination }}</nav>
+        {% endif %}
+      {% endpaginate %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

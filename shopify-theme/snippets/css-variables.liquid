@@ -1,0 +1,16 @@
+{% style %}
+  :root {
+    --bg: {{ settings.color_bg }};
+    --surface: {{ settings.color_surface }};
+    --text: {{ settings.color_text }};
+    --muted: {{ settings.color_muted }};
+    --accent: {{ settings.color_accent }};
+    --line: {{ settings.color_line }};
+    --font-heading: {{ settings.type_heading.family }}, {{ settings.type_heading.fallback_families }};
+    --font-heading-weight: {{ settings.type_heading.weight }};
+    --font-heading-style: {{ settings.type_heading.style }};
+    --font-body: {{ settings.type_body.family }}, {{ settings.type_body.fallback_families }};
+    --font-body-weight: {{ settings.type_body.weight }};
+    --font-body-style: {{ settings.type_body.style }};
+  }
+{% endstyle %}

@@ -1,0 +1,32 @@
+<section class="band">
+  <div class="shell news">
+    <div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="muted">{{ section.settings.text }}</p>
+    </div>
+    {% form 'customer', class: 'news__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label class="visually-hidden" for="newsletter-email-{{ section.id }}">Email</label>
+      <input id="newsletter-email-{{ section.id }}" type="email" name="contact[email]" required autocomplete="email" placeholder="you@email.com">
+      <button class="button" type="submit">{{ section.settings.button }}</button>
+      {% if form.posted_successfully? %}
+        <p class="form-note" role="status">You are on the list.</p>
+      {% endif %}
+      {% if form.errors %}
+        <p class="form-note" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+      {% endif %}
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Opening updates" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "One note when new stock is actually on the shelf. No daily spam." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Notify me" }
+  ],
+  "presets": [{ "name": "Newsletter" }]
+}
+{% endschema %}

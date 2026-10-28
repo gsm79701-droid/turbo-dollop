@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Gadget store",
+        "heading": "Phones, gadgets, and licensed software.",
+        "text": "You order online. We check the item, pack it, and hand the parcel to the courier. Digital licenses ship only when we hold the right to sell them.",
+        "primary_label": "Browse everything",
+        "primary_link": "/collections/all",
+        "secondary_label": "Jump to categories",
+        "secondary_link": "#categories"
+      }
+    },
+    "categories": {
+      "type": "category-grid",
+      "blocks": {
+        "mobiles": {
+          "type": "category",
+          "settings": {
+            "index": "01",
+            "title": "Mobiles",
+            "text": "Phones and tablets",
+            "url": "/collections/mobiles"
+          }
+        },
+        "audio": {
+          "type": "category",
+          "settings": {
+            "index": "02",
+            "title": "Audio",
+            "text": "Buds, headphones, speakers",
+            "url": "/collections/audio"
+          }
+        },
+        "wearables": {
+          "type": "category",
+          "settings": {
+            "index": "03",
+            "title": "Wearables",
+            "text": "Watches and bands",
+            "url": "/collections/wearables"
+          }
+        },
+        "accessories": {
+          "type": "category",
+          "settings": {
+            "index": "04",
+            "title": "Accessories",
+            "text": "Chargers, cables, mounts",
+            "url": "/collections/accessories"
+          }
+        },
+        "computing": {
+          "type": "category",
+          "settings": {
+            "index": "05",
+            "title": "Computing",
+            "text": "Hubs, keyboards, storage",
+            "url": "/collections/computing"
+          }
+        },
+        "software": {
+          "type": "category",
+          "settings": {
+            "index": "06",
+            "title": "Software",
+            "text": "Licenses you are allowed to resell",
+            "url": "/collections/software"
+          }
+        }
+      },
+      "block_order": ["mobiles", "audio", "wearables", "accessories", "computing", "software"],
+      "settings": {
+        "heading": "What you can buy",
+        "text": "Six shelves. Add only stock you actually have, with your own photos and prices."
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "In stock now",
+        "limit": 6
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "categories", "steps", "featured", "newsletter"]
+}
